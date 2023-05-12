@@ -18,28 +18,28 @@ export default class App extends Component {
           <Navbar/>
           <Switch>
             <Route exact path="/">
-              <News key="general" pageSize={9} country="in" category="general"/>
+              <News key="general" pageSize={9} country="in" title="Top Headlines" category="general"/>
             </Route>
             <Route exact path="/business">
-              <News key="business" pageSize={9} country="in" category="business"/>
+              <News key="business" pageSize={9} country="in" title="Business - Top Headlines" category="business"/>
             </Route>
             <Route exact path="/entertainment">
-              <News key="entertainment" exact pageSize={9} country="in" category="entertainment"/>
+              <News key="entertainment" exact pageSize={9} country="in" title="Entertainment - Top Headlines" category="entertainment"/>
             </Route>
             <Route exact path="/general">
-              <News key="general" pageSize={9} country="in" category="general"/>
+              <News key="general" pageSize={9} country="in" title="Top Headlines" category="general"/>
             </Route>
             <Route exact path="/health">
-              <News key="health" pageSize={9} country="in" category="health"/>
+              <News key="health" pageSize={9} country="in" title="Health - Top Headlines" category="health"/>
             </Route>
             <Route exact path="/science">
-              <News key="science"pageSize={9} country="in" category="science"/>
+              <News key="science"pageSize={9} country="in" title="Science - Top Headlines" category="science"/>
             </Route>
             <Route exact path="/sports">
-              <News key="sports"pageSize={9} country="in" category="sports"/>
+              <News key="sports"pageSize={9} country="in" title="Sports - Top Headlines" category="sports"/>
             </Route>
             <Route exact path="/technology">
-              <News key="technology"pageSize={9} country="in" category="technology"/>
+              <News key="technology"pageSize={9} country="in" title="Technology - Top Headlines" category="technology"/>
             </Route>
           </Switch>
         </Router>

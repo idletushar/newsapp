@@ -35,27 +35,30 @@ export class News extends Component {
         document.title= `${this.capitalizeFirstLetter(this.props.category)} - News4You`
     }
     // 18b1ad644e834eb698ea2e7847387adb outlook api
+    // a9b3eb2aa3ed4b05ba546ecf295d540d gmail api
 
-3
+// 3
     async componentDidMount(){
-      const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a9b3eb2aa3ed4b05ba546ecf295d540d&page=1&pageSize=${this.props.pageSize}`;
+      this.props.setProgress(10);
+      const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`;
       this.setState({loading: true})
       let data = await fetch(url);
+      this.props.setProgress(30);
       let parsedData = await data.json();
-      console.log(parsedData);
+      this.props.setProgress(70);
       this.setState({
         articles: parsedData.articles, 
         totalResults: parsedData.totalResults,
         loading: false     
       })
+      this.props.setProgress(100);
     }
 
       fetchMoreData= async()=>{
         this.setState({page: this.state.page + 1,})
-          const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=a9b3eb2aa3ed4b05ba546ecf295d540d&page=1&pageSize=${this.props.pageSize}`;
+          const url = `https://newsapi.org/v2/top-headlines?country=${this.props.country}&category=${this.props.category}&apiKey=${this.props.apiKey}&page=1&pageSize=${this.props.pageSize}`;
       let data = await fetch(url);
       let parsedData = await data.json();
-      console.log(parsedData);
       this.setState({
         articles: this.state.articles.concat(parsedData.articles) , 
         totalResults: parsedData.totalResults,
@@ -69,7 +72,6 @@ export class News extends Component {
     return (
       <div className='container my=3'>
       <h1 className='text-center my-5 display-4'>News4You - {this.props.title}</h1>
-        {this.state.loading && <Spinner/>}
 
         <InfiniteScroll
           dataLength={this.state.articles.length}
@@ -78,7 +80,7 @@ export class News extends Component {
           loader={<Spinner/>}
         >
         <div className="container">
-        <div className='row'>
+        <div className='row shadow-lg p-3 mb-5 bg-white rounded'>
           {/* with this we can iterate all array items */}
           {/* use element */}
           {/* we can also do this by destructuring */}
